@@ -10,17 +10,46 @@ shift = int(input("Type the shift number:\n"))
 #  by the shift amount and print the decrypted text.
 # TODO-3: Combine the 'encrypt()' and 'decrypt()' functions into one function called 'caesar()'.
 #  Use the value of the user chosen 'direction' variable to determine which functionality to use.
+# def ceasar(text,shift,direction):
+#     def encrypt(original_text, shift_amount):
+#         cipher_text = ""
+#         for letter in original_text:
+#             shifted_position = alphabet.index(letter) + shift_amount
+#             shifted_position %= len(alphabet)
+#             cipher_text += alphabet[shifted_position]
+#         print(f"Here is the encoded result: {cipher_text}")
+#
+#     def decrypt(coded_text, shift_amount):
+#         original_text = ""
+#         for letter in coded_text:
+#             shifted_position = alphabet.index(letter) - shift_amount
+#             shifted_position %= len(alphabet)
+#             original_text += alphabet[shifted_position]
+#         print(f"Here is the original text: {original_text}")
+#
+#     if direction=="encode":
+#         encrypt(text, shift)
+#     else:
+#         decrypt(text,shift)
 
-def encrypt(original_text, shift_amount):
-    cipher_text = ""
-    for letter in original_text:
-        shifted_position = alphabet.index(letter) + shift_amount
-        shifted_position %= len(alphabet)
-        cipher_text += alphabet[shifted_position]
-    print(f"Here is the encoded result: {cipher_text}")
 
+def ceasar(text,shift,direction):
+    original_text = ""
+    for letter in text:
+        if letter != " ":
+            if direction == "encode":
+                shifted_position = alphabet.index(letter) + shift
+            else:
+                shifted_position = alphabet.index(letter) - shift
+            shifted_position %= len(alphabet)
+            original_text += alphabet[shifted_position]
+        else:
+            original_text+=" "
 
-encrypt(original_text=text, shift_amount=shift)
+    print(f"Here is the {direction}d result: {original_text}")
+
+ceasar(text, shift, direction)
+
 
 
 
