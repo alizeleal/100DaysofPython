@@ -25,7 +25,7 @@ def number_game():
             lives -= 1
         else:
             print(f"You guessed right! The number is: {guess}")
-            return 
+            return
     if lives == 0:
         print("You didn't guess the correct number")
 
