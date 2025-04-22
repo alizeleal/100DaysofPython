@@ -33,7 +33,7 @@ def blackjack():
             print("\n" * 50)
             blackjack()
         else:
-            return 0
+            return False
     another_card = input("Type 'y' to draw another card. Type 'n' to pass.")
     while another_card == 'y':
         players_hand.append(draw())
@@ -50,24 +50,22 @@ def blackjack():
             print("\n\n(ㆆ _ ㆆ)\n\n")
             print("You overdraw. You lose!")
             print("********----------********\n")
-            players_hand =[]
-            dealers_hand[0] = draw()
             play = input("Type 'y' and press Enter to play again\n")
             if play == 'y':
                 print("\n" * 50)
                 blackjack()
             else:
-                return 0
+                return False
         else:
             another_card = input("\nType 'y' to draw another card. Type 'n' to pass.\n")
 
     print(f"\nYour final hand: {players_hand}, final score: {sum(players_hand)}")
     dealers_hand.append(draw())
-    if sum(dealers_hand) < 18:
+    while sum(dealers_hand) < 18:
         dealers_hand.append(draw())
-    if dealers_hand[-1] == 11 and sum(dealers_hand) > 21:
-        dealers_hand.remove(11)
-        dealers_hand.append(1)
+        if dealers_hand[-1] == 11 and sum(dealers_hand) > 21:
+            dealers_hand.remove(11)
+            dealers_hand.append(1)
     print(f"\nThe Dealer's final hand: {dealers_hand}, final score: {sum(dealers_hand)}")
     if sum(dealers_hand) > 21:
         print("\n\n	☜(⌒▽⌒)☞\n\n")
@@ -87,6 +85,6 @@ def blackjack():
         print("\n"*50)
         blackjack()
     else:
-        return 0
+        return False
 
 blackjack()
